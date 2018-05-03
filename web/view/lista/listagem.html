@@ -1,0 +1,72 @@
+<div class="row">
+	<div class="container">
+		<div class="alert alert-success" id="success-alert">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<strong>Nova lista criada com sucesso!</strong>
+		</div>
+
+		<div class="alert alert-success" id="remove-alert">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<strong>Lista removida com sucesso!</strong>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Listas da Categoria '{{nomeCategoria}}'
+				<div class="pull-right">
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNovaLista">
+						<i class="fa fa-plus" /> Nova Lista
+					</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped table-hover">
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th style="width: 100px">Ver Itens</th>
+						<th style="width: 100px">Excluir</th>
+					</tr>
+					<tr ng-repeat="(key, value) in listas">
+						<td>{{value.id}}</td>
+						<td>{{value.name}}</td>
+						<td class="text-center">
+							<div class="btn btn-info" ng-click="verItens(value.id, value.name)">
+								<i class="fa fa-eye" />
+							</div>
+						</td>
+						<td class="text-center">
+							<div class="btn btn-danger" ng-click="removeLista(value.id, value.name)">
+								<i class="fa fa-close" />
+							</div>
+						</td>
+					</tr>
+					<tr ng-show="listas.length == 0">
+						<td colspan="4" class="text-center">Não há listas cadastradas.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalNovaLista" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Criar Nova Lista</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Nome:</label>
+					<input type="text" class="form-control" ng-model="nomeNovaLista">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="btn btn-success" ng-click="criarLista()">Criar</div>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+	</div>
+</div>

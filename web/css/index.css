@@ -1,0 +1,8 @@
+body {
+	padding-top: 30px;
+}
+
+.panel-heading {
+    overflow: auto;
+    font-size: 24px;
+}

@@ -1,0 +1,66 @@
+<div class="row">
+	<div class="container">
+		<div class="alert alert-success" id="success-alert">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<strong>Novo item criado com sucesso!</strong>
+		</div>
+
+		<div class="alert alert-success" id="remove-alert">
+			<button type="button" class="close" data-dismiss="alert">x</button>
+			<strong>Item removido com sucesso!</strong>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Itens da Lista '{{nomeLista}}'
+				<div class="pull-right">
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNovoItem">
+						<i class="fa fa-plus" /> Novo Item
+					</button>
+				</div>
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped table-hover">
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th style="width: 100px">Excluir</th>
+					</tr>
+					<tr ng-repeat="(key, value) in itens">
+						<td>{{value.id}}</td>
+						<td>{{value.name}}</td>
+						<td class="text-center">
+							<div class="btn btn-danger" ng-click="removeItem(value.id, value.name)">
+								<i class="fa fa-close" />
+							</div>
+						</td>
+					</tr>
+					<tr ng-show="itens.length == 0">
+						<td colspan="3" class="text-center">Não há itens cadastrados.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalNovoItem" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Criar Novo Item</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Nome:</label>
+					<input type="text" class="form-control" ng-model="nomeNovoItem">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="btn btn-success" ng-click="criarItem()">Criar</div>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+	</div>
+</div>

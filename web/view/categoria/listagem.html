@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Categorias de Lista
+			</div>
+			<div class="panel-body">
+				<table class="table table-bordered table-striped table-hover">
+					<tr>
+						<th>Id</th>
+						<th>Nome</th>
+						<th style="width: 100px">Ver Listas</th>
+					</tr>
+					<tr ng-repeat="(key, value) in categorias">
+						<td>{{value.id}}</td>
+						<td>{{value.name}}</td>
+						<td class="text-center">
+							<div class="btn btn-info" ng-click="verListas(value.id, value.name)">
+								<i class="fa fa-eye" />
+							</div>
+						</td>
+					</tr>
+					<tr ng-show="categorias.length == 0">
+						<td colspan="3" class="text-center">Não há categorias cadastradas.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
